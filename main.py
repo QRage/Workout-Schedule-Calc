@@ -9,17 +9,19 @@ def determine_workout_days(year, month, planning_day):
     for day in range(1, days_in_month + 1):
         if (day - planning_day) % 4 < 2:
             if datetime.datetime(year, month, day).weekday() in [0, 2, 4]:
-                workout_days.append(f"День {day} - вільний для тренування")
+                workout_days.append(f"День {datetime.datetime.now().year}-{datetime.datetime.now().month}-{day} - вільний для тренування")
             else:
-                workout_days.append(f"День {day} - день відпочинку")
+                workout_days.append(f"День {datetime.datetime.now().year}-{datetime.datetime.now().month}-{day} - день відпочинку")
         else:
-            workout_days.append(f"День {day} - на роботі")
+            workout_days.append(f"День {datetime.datetime.now().year}-{datetime.datetime.now().month}-{day} - на роботі")
 
     return workout_days
 
 
 current_year = datetime.datetime.now().year
 current_month = datetime.datetime.now().month
+current_day = datetime.datetime.now().day
+
 
 planning_day_input = int(input("Введіть день для планування: "))
 
